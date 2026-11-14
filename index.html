@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Almilov — Simple apps for iPhone</title>
+<script>
+/* Язык: #ru / #en в адресе → выбор переключателем (localStorage) → язык браузера (ru → ru, иначе en). */
+(function(){var h=location.hash.slice(1).toLowerCase(),s=null;try{s=localStorage.getItem("almilov-lang")}catch(e){}
+var b=String((navigator.languages&&navigator.languages[0])||navigator.language||"en").toLowerCase().indexOf("ru")===0?"ru":"en";
+var l=(h==="ru"||h==="en")?h:(s==="ru"||s==="en")?s:b;document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l;})();
+</script>
 <meta name="description" content="We build simple, thoughtful apps for iPhone: Treeo, Kursor and Keepsum.">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
@@ -18,7 +24,11 @@
        background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
   .wrap{max-width:768px;margin:0 auto;padding:0 24px}
   header{border-bottom:1px solid var(--line)}
-  header .wrap{padding-top:24px;padding-bottom:24px}
+  header .wrap{padding-top:24px;padding-bottom:24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .lang-toggle{font-size:15px;color:var(--muted);white-space:nowrap}
+  .lang-toggle a{color:var(--muted);text-decoration:none}
+  .lang-toggle a.active{color:var(--text);font-weight:700}
+  .lang-toggle .sep{margin:0 6px;opacity:.6}
   .logo{font-weight:800;font-size:17px;letter-spacing:.14em;color:var(--text);text-decoration:none}
   .hero{padding:56px 0 48px}
   .hero h1{font-size:clamp(34px,6vw,48px);line-height:1.1;letter-spacing:-.02em;font-weight:800}
@@ -48,45 +58,45 @@
 </style>
 </head>
 <body>
-<header><div class="wrap"><a class="logo" href="/">ALMILOV</a></div></header>
+<header><div class="wrap"><a class="logo" href="/">ALMILOV</a><span class="lang-toggle"><a href="#ru" data-set-lang="ru" lang="ru">RU</a><span class="sep">|</span><a href="#en" data-set-lang="en" lang="en">EN</a></span></div></header>
 <div class="wrap">
 
   <section class="hero">
-    <h1>Simple apps for everyday life.</h1>
-    <p>We design and build small, focused apps for iPhone — tools that do one thing well, look calm and stay out of your way.</p>
+    <h1 data-ru="Простые приложения на каждый день.">Simple apps for everyday life.</h1>
+    <p data-ru="Мы проектируем и делаем небольшие приложения для iPhone — инструменты, которые хорошо делают одно дело, выглядят спокойно и не мешают.">We design and build small, focused apps for iPhone — tools that do one thing well, look calm and stay out of your way.</p>
   </section>
 
-  <h2>Our apps</h2>
+  <h2 data-ru="Наши приложения">Our apps</h2>
   <section class="apps">
-    <a class="app" href="https://treeo.almilov.com">
-      <img class="icon" src="icons/treeo.png" alt="Treeo app icon">
+    <a class="app" href="https://treeo.almilov.com" data-lang-link>
+      <img class="icon" src="icons/treeo.png" alt="Treeo app icon" data-ru-alt="Иконка приложения Treeo">
       <h3>Treeo</h3>
       <div class="tag">Simple Projects</div>
-      <p class="desc">Keep track of projects with three levels of nesting, daily check-ins and a day counter for every task.</p>
-      <span class="more">Open website →</span>
+      <p class="desc" data-ru="Следите за проектами: три уровня вложенности, ежедневные отметки и счётчик дней для каждой задачи.">Keep track of projects with three levels of nesting, daily check-ins and a day counter for every task.</p>
+      <span class="more" data-ru="Открыть сайт →">Open website →</span>
     </a>
 
     <div class="app">
       <div class="icon i-kursor">₽</div>
       <h3>Kursor</h3>
       <div class="tag">Currency Converter</div>
-      <p class="desc">Official central bank rates, exchange quotes and a quick converter with history for any date. Home-screen widgets included.</p>
-      <span class="soon">Coming soon</span>
+      <p class="desc" data-ru="Официальные курсы ЦБ, биржевые котировки и быстрый конвертер с историей на любую дату. Есть виджеты для экрана «Домой».">Official central bank rates, exchange quotes and a quick converter with history for any date. Home-screen widgets included.</p>
+      <span class="soon" data-ru="Скоро">Coming soon</span>
     </div>
 
     <div class="app">
-      <img class="icon" src="icons/keepsum.png" alt="Keepsum app icon">
+      <img class="icon" src="icons/keepsum.png" alt="Keepsum app icon" data-ru-alt="Иконка приложения Keepsum">
       <h3>Keepsum</h3>
-      <div class="tag">Personal Finance</div>
-      <p class="desc">A clear, private way to see where your money goes and keep your finances in order.</p>
-      <span class="soon">Coming soon</span>
+      <div class="tag" data-ru="Личные финансы">Personal Finance</div>
+      <p class="desc" data-ru="Понятный и приватный способ видеть, куда уходят деньги, и держать финансы в порядке.">A clear, private way to see where your money goes and keep your finances in order.</p>
+      <span class="soon" data-ru="Скоро">Coming soon</span>
     </div>
   </section>
 
-  <h2>About</h2>
+  <h2 data-ru="О нас">About</h2>
   <section class="about">
-    <p>We are a small independent studio. Every app starts with a simple question: what is the least we can build that genuinely helps?</p>
-    <p>Questions or feedback — write to <a href="mailto:support@cozycave.ru">support@cozycave.ru</a>.</p>
+    <p data-ru="Мы — небольшая независимая студия. Каждое приложение начинается с простого вопроса: что самое малое мы можем сделать, чтобы это по-настоящему помогало?">We are a small independent studio. Every app starts with a simple question: what is the least we can build that genuinely helps?</p>
+    <p><span data-ru="Вопросы и отзывы — пишите на">Questions or feedback — write to</span> <a href="mailto:support@cozycave.ru">support@cozycave.ru</a>.</p>
   </section>
 
   <footer>
@@ -94,5 +104,36 @@
     <a href="mailto:support@cozycave.ru">support@cozycave.ru</a>
   </footer>
 </div>
+<script>
+/* Переключатель RU | EN: тексты из data-ru (английский — исходный текст, запоминается в data-en). */
+(function(){
+  var root=document.documentElement, KEY="almilov-lang";
+  var titles={en:document.title, ru:"Almilov — простые приложения для iPhone"};
+  function apply(lang){
+    root.setAttribute("data-lang",lang); root.lang=lang; document.title=titles[lang];
+    if(location.hash.slice(1)!==lang&&history.replaceState) history.replaceState(null,"",location.pathname+location.search+"#"+lang);
+    document.querySelectorAll("[data-ru]").forEach(function(el){
+      if(!el.hasAttribute("data-en")) el.setAttribute("data-en",el.textContent);
+      el.textContent=el.getAttribute("data-"+lang);
+    });
+    document.querySelectorAll("[data-ru-alt]").forEach(function(el){
+      if(!el.hasAttribute("data-en-alt")) el.setAttribute("data-en-alt",el.alt);
+      el.alt=el.getAttribute("data-"+lang+"-alt");
+    });
+    document.querySelectorAll("[data-lang-link]").forEach(function(el){ el.href=el.href.split("#")[0]+"#"+lang; });
+    document.querySelectorAll("[data-set-lang]").forEach(function(el){
+      var on=el.getAttribute("data-set-lang")===lang; el.classList.toggle("active",on); el.setAttribute("aria-current",on?"true":"false");
+    });
+  }
+  apply(root.getAttribute("data-lang")||"en");
+  document.addEventListener("click",function(e){
+    var t=e.target.closest&&e.target.closest("[data-set-lang]"); if(!t) return;
+    e.preventDefault(); var lang=t.getAttribute("data-set-lang");
+    try{localStorage.setItem(KEY,lang)}catch(err){}
+    apply(lang);
+  });
+  window.addEventListener("hashchange",function(){var h=location.hash.slice(1).toLowerCase(); if(h==="ru"||h==="en") apply(h);});
+})();
+</script>
 </body>
 </html>
